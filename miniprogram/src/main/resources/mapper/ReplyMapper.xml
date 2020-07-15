@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aode.dao.ReplyMapper">
+  <resultMap id="BaseResultMap" type="com.aode.bean.Reply">
+    <id column="reply_id" jdbcType="INTEGER" property="replyId" />
+    <result column="reply_postTime" jdbcType="TIMESTAMP" property="replyPosttime" />
+    <result column="reply_content" jdbcType="VARCHAR" property="replyContent" />
+    <result column="reply_userId" jdbcType="INTEGER" property="replyUserid" />
+    <result column="reply_commentId" jdbcType="INTEGER" property="replyCommentid" />
+    <result column="reply _state" jdbcType="INTEGER" property="replyState" />
+    <result column="reply_for_userId" jdbcType="INTEGER" property="replyForUserid" />
+    <result column="reply_for_username" jdbcType="VARCHAR" property="replyForUsername" />
+    <result column="reply_username" jdbcType="VARCHAR" property="replyUsername" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    reply_id, reply_postTime, reply_content, reply_userId, reply_commentId, "reply _state", 
+    reply_for_userId, reply_for_username, reply_username
+  </sql>
+  <select id="selectByExample" parameterType="com.aode.bean.ReplyExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from reply
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from reply
+    where reply_id = #{replyId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from reply
+    where reply_id = #{replyId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.aode.bean.ReplyExample">
+    delete from reply
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.aode.bean.Reply">
+    insert into reply (reply_id, reply_postTime, reply_content, 
+      reply_userId, reply_commentId, "reply _state", 
+      reply_for_userId, reply_for_username, reply_username
+      )
+    values (#{replyId,jdbcType=INTEGER}, #{replyPosttime,jdbcType=TIMESTAMP}, #{replyContent,jdbcType=VARCHAR}, 
+      #{replyUserid,jdbcType=INTEGER}, #{replyCommentid,jdbcType=INTEGER}, #{replyState,jdbcType=INTEGER}, 
+      #{replyForUserid,jdbcType=INTEGER}, #{replyForUsername,jdbcType=VARCHAR}, #{replyUsername,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.aode.bean.Reply">
+    insert into reply
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="replyId != null">
+        reply_id,
+      </if>
+      <if test="replyPosttime != null">
+        reply_postTime,
+      </if>
+      <if test="replyContent != null">
+        reply_content,
+      </if>
+      <if test="replyUserid != null">
+        reply_userId,
+      </if>
+      <if test="replyCommentid != null">
+        reply_commentId,
+      </if>
+      <if test="replyState != null">
+        "reply _state",
+      </if>
+      <if test="replyForUserid != null">
+        reply_for_userId,
+      </if>
+      <if test="replyForUsername != null">
+        reply_for_username,
+      </if>
+      <if test="replyUsername != null">
+        reply_username,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="replyId != null">
+        #{replyId,jdbcType=INTEGER},
+      </if>
+      <if test="replyPosttime != null">
+        #{replyPosttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="replyContent != null">
+        #{replyContent,jdbcType=VARCHAR},
+      </if>
+      <if test="replyUserid != null">
+        #{replyUserid,jdbcType=INTEGER},
+      </if>
+      <if test="replyCommentid != null">
+        #{replyCommentid,jdbcType=INTEGER},
+      </if>
+      <if test="replyState != null">
+        #{replyState,jdbcType=INTEGER},
+      </if>
+      <if test="replyForUserid != null">
+        #{replyForUserid,jdbcType=INTEGER},
+      </if>
+      <if test="replyForUsername != null">
+        #{replyForUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="replyUsername != null">
+        #{replyUsername,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.aode.bean.ReplyExample" resultType="java.lang.Long">
+    select count(*) from reply
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update reply
+    <set>
+      <if test="record.replyId != null">
+        reply_id = #{record.replyId,jdbcType=INTEGER},
+      </if>
+      <if test="record.replyPosttime != null">
+        reply_postTime = #{record.replyPosttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.replyContent != null">
+        reply_content = #{record.replyContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.replyUserid != null">
+        reply_userId = #{record.replyUserid,jdbcType=INTEGER},
+      </if>
+      <if test="record.replyCommentid != null">
+        reply_commentId = #{record.replyCommentid,jdbcType=INTEGER},
+      </if>
+      <if test="record.replyState != null">
+        "reply _state" = #{record.replyState,jdbcType=INTEGER},
+      </if>
+      <if test="record.replyForUserid != null">
+        reply_for_userId = #{record.replyForUserid,jdbcType=INTEGER},
+      </if>
+      <if test="record.replyForUsername != null">
+        reply_for_username = #{record.replyForUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.replyUsername != null">
+        reply_username = #{record.replyUsername,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update reply
+    set reply_id = #{record.replyId,jdbcType=INTEGER},
+      reply_postTime = #{record.replyPosttime,jdbcType=TIMESTAMP},
+      reply_content = #{record.replyContent,jdbcType=VARCHAR},
+      reply_userId = #{record.replyUserid,jdbcType=INTEGER},
+      reply_commentId = #{record.replyCommentid,jdbcType=INTEGER},
+      "reply _state" = #{record.replyState,jdbcType=INTEGER},
+      reply_for_userId = #{record.replyForUserid,jdbcType=INTEGER},
+      reply_for_username = #{record.replyForUsername,jdbcType=VARCHAR},
+      reply_username = #{record.replyUsername,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.aode.bean.Reply">
+    update reply
+    <set>
+      <if test="replyPosttime != null">
+        reply_postTime = #{replyPosttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="replyContent != null">
+        reply_content = #{replyContent,jdbcType=VARCHAR},
+      </if>
+      <if test="replyUserid != null">
+        reply_userId = #{replyUserid,jdbcType=INTEGER},
+      </if>
+      <if test="replyCommentid != null">
+        reply_commentId = #{replyCommentid,jdbcType=INTEGER},
+      </if>
+      <if test="replyState != null">
+        "reply _state" = #{replyState,jdbcType=INTEGER},
+      </if>
+      <if test="replyForUserid != null">
+        reply_for_userId = #{replyForUserid,jdbcType=INTEGER},
+      </if>
+      <if test="replyForUsername != null">
+        reply_for_username = #{replyForUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="replyUsername != null">
+        reply_username = #{replyUsername,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where reply_id = #{replyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.aode.bean.Reply">
+    update reply
+    set reply_postTime = #{replyPosttime,jdbcType=TIMESTAMP},
+      reply_content = #{replyContent,jdbcType=VARCHAR},
+      reply_userId = #{replyUserid,jdbcType=INTEGER},
+      reply_commentId = #{replyCommentid,jdbcType=INTEGER},
+      "reply _state" = #{replyState,jdbcType=INTEGER},
+      reply_for_userId = #{replyForUserid,jdbcType=INTEGER},
+      reply_for_username = #{replyForUsername,jdbcType=VARCHAR},
+      reply_username = #{replyUsername,jdbcType=VARCHAR}
+    where reply_id = #{replyId,jdbcType=INTEGER}
+  </update>
+</mapper>

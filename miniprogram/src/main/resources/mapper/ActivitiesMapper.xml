@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aode.dao.ActivitiesMapper">
+  <resultMap id="BaseResultMap" type="com.aode.bean.Activities">
+    <id column="activity_id" jdbcType="INTEGER" property="activityId" />
+    <result column="activity_title" jdbcType="VARCHAR" property="activityTitle" />
+    <result column="activity_content" jdbcType="VARCHAR" property="activityContent" />
+    <result column="activity_beginTime" jdbcType="VARCHAR" property="activityBegintime" />
+    <result column="activity_endTime" jdbcType="VARCHAR" property="activityEndtime" />
+    <result column="activity_isDeleted" jdbcType="INTEGER" property="activityIsdeleted" />
+    <result column="activity_mainPicture" jdbcType="VARCHAR" property="activityMainpicture" />
+    <result column="
+is_timeOut" jdbcType="INTEGER" property="
+isTimeout" />
+    <result column="member_num" jdbcType="INTEGER" property="memberNum" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    activity_id, activity_title, activity_content, activity_beginTime, activity_endTime, 
+    activity_isDeleted, activity_mainPicture, 
+is_timeOut, member_num
+  </sql>
+  <select id="selectByExample" parameterType="com.aode.bean.ActivitiesExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from activities
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from activities
+    where activity_id = #{activityId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from activities
+    where activity_id = #{activityId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.aode.bean.ActivitiesExample">
+    delete from activities
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.aode.bean.Activities">
+    insert into activities (activity_id, activity_title, activity_content, 
+      activity_beginTime, activity_endTime, activity_isDeleted, 
+      activity_mainPicture, 
+is_timeOut, member_num
+      )
+    values (#{activityId,jdbcType=INTEGER}, #{activityTitle,jdbcType=VARCHAR}, #{activityContent,jdbcType=VARCHAR}, 
+      #{activityBegintime,jdbcType=VARCHAR}, #{activityEndtime,jdbcType=VARCHAR}, #{activityIsdeleted,jdbcType=INTEGER}, 
+      #{activityMainpicture,jdbcType=VARCHAR}, #{
+isTimeout,jdbcType=INTEGER}, #{memberNum,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.aode.bean.Activities">
+    insert into activities
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="activityId != null">
+        activity_id,
+      </if>
+      <if test="activityTitle != null">
+        activity_title,
+      </if>
+      <if test="activityContent != null">
+        activity_content,
+      </if>
+      <if test="activityBegintime != null">
+        activity_beginTime,
+      </if>
+      <if test="activityEndtime != null">
+        activity_endTime,
+      </if>
+      <if test="activityIsdeleted != null">
+        activity_isDeleted,
+      </if>
+      <if test="activityMainpicture != null">
+        activity_mainPicture,
+      </if>
+      <if test="
+isTimeout != null">
+        
+is_timeOut,
+      </if>
+      <if test="memberNum != null">
+        member_num,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="activityId != null">
+        #{activityId,jdbcType=INTEGER},
+      </if>
+      <if test="activityTitle != null">
+        #{activityTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="activityContent != null">
+        #{activityContent,jdbcType=VARCHAR},
+      </if>
+      <if test="activityBegintime != null">
+        #{activityBegintime,jdbcType=VARCHAR},
+      </if>
+      <if test="activityEndtime != null">
+        #{activityEndtime,jdbcType=VARCHAR},
+      </if>
+      <if test="activityIsdeleted != null">
+        #{activityIsdeleted,jdbcType=INTEGER},
+      </if>
+      <if test="activityMainpicture != null">
+        #{activityMainpicture,jdbcType=VARCHAR},
+      </if>
+      <if test="
+isTimeout != null">
+        #{
+isTimeout,jdbcType=INTEGER},
+      </if>
+      <if test="memberNum != null">
+        #{memberNum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.aode.bean.ActivitiesExample" resultType="java.lang.Long">
+    select count(*) from activities
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update activities
+    <set>
+      <if test="record.activityId != null">
+        activity_id = #{record.activityId,jdbcType=INTEGER},
+      </if>
+      <if test="record.activityTitle != null">
+        activity_title = #{record.activityTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.activityContent != null">
+        activity_content = #{record.activityContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.activityBegintime != null">
+        activity_beginTime = #{record.activityBegintime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.activityEndtime != null">
+        activity_endTime = #{record.activityEndtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.activityIsdeleted != null">
+        activity_isDeleted = #{record.activityIsdeleted,jdbcType=INTEGER},
+      </if>
+      <if test="record.activityMainpicture != null">
+        activity_mainPicture = #{record.activityMainpicture,jdbcType=VARCHAR},
+      </if>
+      <if test="record.
+isTimeout != null">
+        
+is_timeOut = #{record.
+isTimeout,jdbcType=INTEGER},
+      </if>
+      <if test="record.memberNum != null">
+        member_num = #{record.memberNum,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update activities
+    set activity_id = #{record.activityId,jdbcType=INTEGER},
+      activity_title = #{record.activityTitle,jdbcType=VARCHAR},
+      activity_content = #{record.activityContent,jdbcType=VARCHAR},
+      activity_beginTime = #{record.activityBegintime,jdbcType=VARCHAR},
+      activity_endTime = #{record.activityEndtime,jdbcType=VARCHAR},
+      activity_isDeleted = #{record.activityIsdeleted,jdbcType=INTEGER},
+      activity_mainPicture = #{record.activityMainpicture,jdbcType=VARCHAR},
+      
+is_timeOut = #{record.
+isTimeout,jdbcType=INTEGER},
+      member_num = #{record.memberNum,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.aode.bean.Activities">
+    update activities
+    <set>
+      <if test="activityTitle != null">
+        activity_title = #{activityTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="activityContent != null">
+        activity_content = #{activityContent,jdbcType=VARCHAR},
+      </if>
+      <if test="activityBegintime != null">
+        activity_beginTime = #{activityBegintime,jdbcType=VARCHAR},
+      </if>
+      <if test="activityEndtime != null">
+        activity_endTime = #{activityEndtime,jdbcType=VARCHAR},
+      </if>
+      <if test="activityIsdeleted != null">
+        activity_isDeleted = #{activityIsdeleted,jdbcType=INTEGER},
+      </if>
+      <if test="activityMainpicture != null">
+        activity_mainPicture = #{activityMainpicture,jdbcType=VARCHAR},
+      </if>
+      <if test="
+isTimeout != null">
+        
+is_timeOut = #{
+isTimeout,jdbcType=INTEGER},
+      </if>
+      <if test="memberNum != null">
+        member_num = #{memberNum,jdbcType=INTEGER},
+      </if>
+    </set>
+    where activity_id = #{activityId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.aode.bean.Activities">
+    update activities
+    set activity_title = #{activityTitle,jdbcType=VARCHAR},
+      activity_content = #{activityContent,jdbcType=VARCHAR},
+      activity_beginTime = #{activityBegintime,jdbcType=VARCHAR},
+      activity_endTime = #{activityEndtime,jdbcType=VARCHAR},
+      activity_isDeleted = #{activityIsdeleted,jdbcType=INTEGER},
+      activity_mainPicture = #{activityMainpicture,jdbcType=VARCHAR},
+      
+is_timeOut = #{
+isTimeout,jdbcType=INTEGER},
+      member_num = #{memberNum,jdbcType=INTEGER}
+    where activity_id = #{activityId,jdbcType=INTEGER}
+  </update>
+</mapper>

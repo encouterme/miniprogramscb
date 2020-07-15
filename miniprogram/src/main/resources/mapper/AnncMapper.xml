@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aode.dao.AnncMapper">
+  <resultMap id="BaseResultMap" type="com.aode.bean.Annc">
+    <id column="annc_id" jdbcType="INTEGER" property="anncId" />
+    <result column="annc_title" jdbcType="VARCHAR" property="anncTitle" />
+    <result column="annc_content" jdbcType="VARCHAR" property="anncContent" />
+    <result column="annc_time" jdbcType="TIMESTAMP" property="anncTime" />
+    <result column="annc_menber" jdbcType="VARCHAR" property="anncMenber" />
+    <result column="annc_img01" jdbcType="VARCHAR" property="anncImg01" />
+    <result column="annc_img02" jdbcType="VARCHAR" property="anncImg02" />
+    <result column="annc_img03" jdbcType="VARCHAR" property="anncImg03" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    annc_id, annc_title, annc_content, annc_time, annc_menber, annc_img01, annc_img02, 
+    annc_img03
+  </sql>
+  <select id="selectByExample" parameterType="com.aode.bean.AnncExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from annc
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from annc
+    where annc_id = #{anncId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from annc
+    where annc_id = #{anncId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.aode.bean.AnncExample">
+    delete from annc
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.aode.bean.Annc">
+    insert into annc (annc_id, annc_title, annc_content, 
+      annc_time, annc_menber, annc_img01, 
+      annc_img02, annc_img03)
+    values (#{anncId,jdbcType=INTEGER}, #{anncTitle,jdbcType=VARCHAR}, #{anncContent,jdbcType=VARCHAR}, 
+      #{anncTime,jdbcType=TIMESTAMP}, #{anncMenber,jdbcType=VARCHAR}, #{anncImg01,jdbcType=VARCHAR}, 
+      #{anncImg02,jdbcType=VARCHAR}, #{anncImg03,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.aode.bean.Annc">
+    insert into annc
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="anncId != null">
+        annc_id,
+      </if>
+      <if test="anncTitle != null">
+        annc_title,
+      </if>
+      <if test="anncContent != null">
+        annc_content,
+      </if>
+      <if test="anncTime != null">
+        annc_time,
+      </if>
+      <if test="anncMenber != null">
+        annc_menber,
+      </if>
+      <if test="anncImg01 != null">
+        annc_img01,
+      </if>
+      <if test="anncImg02 != null">
+        annc_img02,
+      </if>
+      <if test="anncImg03 != null">
+        annc_img03,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="anncId != null">
+        #{anncId,jdbcType=INTEGER},
+      </if>
+      <if test="anncTitle != null">
+        #{anncTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="anncContent != null">
+        #{anncContent,jdbcType=VARCHAR},
+      </if>
+      <if test="anncTime != null">
+        #{anncTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="anncMenber != null">
+        #{anncMenber,jdbcType=VARCHAR},
+      </if>
+      <if test="anncImg01 != null">
+        #{anncImg01,jdbcType=VARCHAR},
+      </if>
+      <if test="anncImg02 != null">
+        #{anncImg02,jdbcType=VARCHAR},
+      </if>
+      <if test="anncImg03 != null">
+        #{anncImg03,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.aode.bean.AnncExample" resultType="java.lang.Long">
+    select count(*) from annc
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update annc
+    <set>
+      <if test="record.anncId != null">
+        annc_id = #{record.anncId,jdbcType=INTEGER},
+      </if>
+      <if test="record.anncTitle != null">
+        annc_title = #{record.anncTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.anncContent != null">
+        annc_content = #{record.anncContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.anncTime != null">
+        annc_time = #{record.anncTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.anncMenber != null">
+        annc_menber = #{record.anncMenber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.anncImg01 != null">
+        annc_img01 = #{record.anncImg01,jdbcType=VARCHAR},
+      </if>
+      <if test="record.anncImg02 != null">
+        annc_img02 = #{record.anncImg02,jdbcType=VARCHAR},
+      </if>
+      <if test="record.anncImg03 != null">
+        annc_img03 = #{record.anncImg03,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update annc
+    set annc_id = #{record.anncId,jdbcType=INTEGER},
+      annc_title = #{record.anncTitle,jdbcType=VARCHAR},
+      annc_content = #{record.anncContent,jdbcType=VARCHAR},
+      annc_time = #{record.anncTime,jdbcType=TIMESTAMP},
+      annc_menber = #{record.anncMenber,jdbcType=VARCHAR},
+      annc_img01 = #{record.anncImg01,jdbcType=VARCHAR},
+      annc_img02 = #{record.anncImg02,jdbcType=VARCHAR},
+      annc_img03 = #{record.anncImg03,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.aode.bean.Annc">
+    update annc
+    <set>
+      <if test="anncTitle != null">
+        annc_title = #{anncTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="anncContent != null">
+        annc_content = #{anncContent,jdbcType=VARCHAR},
+      </if>
+      <if test="anncTime != null">
+        annc_time = #{anncTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="anncMenber != null">
+        annc_menber = #{anncMenber,jdbcType=VARCHAR},
+      </if>
+      <if test="anncImg01 != null">
+        annc_img01 = #{anncImg01,jdbcType=VARCHAR},
+      </if>
+      <if test="anncImg02 != null">
+        annc_img02 = #{anncImg02,jdbcType=VARCHAR},
+      </if>
+      <if test="anncImg03 != null">
+        annc_img03 = #{anncImg03,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where annc_id = #{anncId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.aode.bean.Annc">
+    update annc
+    set annc_title = #{anncTitle,jdbcType=VARCHAR},
+      annc_content = #{anncContent,jdbcType=VARCHAR},
+      annc_time = #{anncTime,jdbcType=TIMESTAMP},
+      annc_menber = #{anncMenber,jdbcType=VARCHAR},
+      annc_img01 = #{anncImg01,jdbcType=VARCHAR},
+      annc_img02 = #{anncImg02,jdbcType=VARCHAR},
+      annc_img03 = #{anncImg03,jdbcType=VARCHAR}
+    where annc_id = #{anncId,jdbcType=INTEGER}
+  </update>
+</mapper>

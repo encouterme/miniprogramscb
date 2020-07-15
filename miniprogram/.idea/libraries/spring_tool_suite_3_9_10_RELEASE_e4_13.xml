@@ -1,0 +1,24 @@
+<component name="libraryTable">
+  <library name="spring-tool-suite-3.9.10.RELEASE-e4.13">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../第二次考核项目/jar包/（除六个基础包外）AOP开发包" />
+      <root url="file://$PROJECT_DIR$/../../第二次考核项目/jar包/（除六个基础包和AOPjar包外）JDBC开发包" />
+      <root url="file://$PROJECT_DIR$/../../第二次考核项目/jar包/web开发包" />
+      <root url="file://$PROJECT_DIR$/../../第二次考核项目/jar包/JUnit测试包" />
+      <root url="file://$PROJECT_DIR$/../../第二次考核项目/jar包/IOCjar包（Spring四个基础包+两个日志相关包）" />
+      <root url="file://$PROJECT_DIR$/../../第二次考核项目/jar包/DBCP连接池jar包" />
+      <root url="file://$PROJECT_DIR$/../../第二次考核项目/jar包/CRUD" />
+      <root url="file://$PROJECT_DIR$/../../第二次考核项目/jar包/C3P0连接池jar包" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/../../第二次考核项目/jar包/C3P0连接池jar包" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../../第二次考核项目/jar包/CRUD" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../../第二次考核项目/jar包/DBCP连接池jar包" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../../第二次考核项目/jar包/IOCjar包（Spring四个基础包+两个日志相关包）" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../../第二次考核项目/jar包/JUnit测试包" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../../第二次考核项目/jar包/web开发包" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../../第二次考核项目/jar包/（除六个基础包和AOPjar包外）JDBC开发包" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../../第二次考核项目/jar包/（除六个基础包外）AOP开发包" recursive="false" />
+  </library>
+</component>

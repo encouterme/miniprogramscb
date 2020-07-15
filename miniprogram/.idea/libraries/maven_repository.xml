@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="maven_repository">
+    <CLASSES>
+      <root url="file://$MAVEN_REPOSITORY$" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

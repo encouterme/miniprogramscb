@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="mybatis与spring整合全部jar包(包括springmvc)">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../第二次考核项目/(web方向)第二次考核第二周资料/【阶段12】Mybatis/Mybatis资料/黑28期0523/Mybatis/01参考资料/jar包/junit-4.9.jar!/" />
+      <root url="file://$PROJECT_DIR$/../../第二次考核项目/(web方向)第二次考核第二周资料/【阶段12】Mybatis/Mybatis资料/黑28期0523/Mybatis/01参考资料/jar包/mybatis与spring整合全部jar包(包括springmvc)" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../第二次考核项目/(web方向)第二次考核第二周资料/【阶段12】Mybatis/Mybatis资料/黑28期0523/Mybatis/01参考资料/jar包/mybatis-spring-1.2.2-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../第二次考核项目/(web方向)第二次考核第二周资料/【阶段12】Mybatis/Mybatis资料/黑28期0523/Mybatis/01参考资料/jar包/mybatis-3.2.7-source.zip!/mybatis-3-mybatis-3.2.7/src/main/java" />
+      <root url="jar://$PROJECT_DIR$/../../第二次考核项目/(web方向)第二次考核第二周资料/【阶段12】Mybatis/Mybatis资料/黑28期0523/Mybatis/01参考资料/jar包/mybatis-3.2.7-source.zip!/mybatis-3-mybatis-3.2.7/src/test/java" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/../../第二次考核项目/(web方向)第二次考核第二周资料/【阶段12】Mybatis/Mybatis资料/黑28期0523/Mybatis/01参考资料/jar包/mybatis与spring整合全部jar包(包括springmvc)" recursive="false" />
+  </library>
+</component>
